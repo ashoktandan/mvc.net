@@ -1,0 +1,30 @@
+server:
+public ActionResult Index()
+        {
+            return View();
+        }
+        
+client:
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>index</title>
+    <script src="~/jquery-2.1.4.min.js"></script>
+</head>
+<body><button id="btn" >click</button>
+    <h1 id="xxx"> </h1>
+      <script>
+          $(function () {
+              $('#btn').click(function () {
+                  $.getJSON("/home/mydata", function (data) {
+                      $.each(data, function (index, user) {
+                          $('#xxx').append(user.id+""+user.name+"</br>");
+                      });
+                  });
+              });
+          });
+      </script>  
+   
+</body>
+</html>
