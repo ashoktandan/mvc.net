@@ -1,0 +1,47 @@
+client:
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title> <script src="~/jquery-2.1.4.min.js"></script>
+</head>
+<body>
+    <input type="text" id="eid"/>
+     <input type="text" id="ename"/>
+     <input type="text" id="epic"/>
+     <input type="text" id="epass"/>
+    <button id="btn" >click</button>
+    <h1 id="xxx"> </h1>
+           <script>
+                      $(function () {
+                          $('#btn').click(function () {
+                              var cardetails =
+                             {
+                                 id: $('#eid').val(),
+                                 name: $('#ename').val(),
+                                 pic: $('#epic').val(),
+                                 pass: $('#epass').val()
+                             };
+                              $.ajax({
+                                  type: "POST",
+                                  data: JSON.stringify(cardetails),
+                                  url: "/dope/Index",
+                                  dataType: "json",
+                                  contentType: "application/json",
+                              });
+                          });
+                          });
+    </script>
+</body>
+</html>
+
+server:
+ [HttpPost]
+        public ActionResult Index(employee e)
+        {
+            db.employees.Add(e);
+            db.SaveChanges();
+            var v=db.employees.ToList();
+            return Json(v, JsonRequestBehavior.AllowGet);
+        }
