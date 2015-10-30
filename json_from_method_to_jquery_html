@@ -1,8 +1,9 @@
 server:
-public ActionResult Index()
-        {
-            return View();
-        }
+ public ActionResult mydata()
+       {
+          var v=s.employees.ToList();
+           return Json(v, JsonRequestBehavior.AllowGet);
+       }
         
 client:
 <!DOCTYPE html>
