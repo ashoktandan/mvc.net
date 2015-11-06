@@ -1,0 +1,2 @@
+
+<input type="password" pattern="[a-z]{5}[0-9]{5}" class="form-control" placeholder="enter password" required aria-required>
